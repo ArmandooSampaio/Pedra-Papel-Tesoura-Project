@@ -1,21 +1,25 @@
-function getComputerChoice(){
-    let randomDecimal = Math.random();
-    let randomInteiro = Math.floor(randomDecimal * 3) + 1
-    let computerChoice;
-
-    switch(randomInteiro){
-        case 1: 
-            computerChoice = "pedra";
-            break;
-        case 2:
-            computerChoice= "papel";
-            break;
-        case 3:
-            computerChoice  = "tesoura";
-            break;
-    }
-    return computerChoice;
+function getComputerChoice() {
+    const randomInteiro = Math.floor(Math.random() * 3) + 1;
+    return (randomInteiro === 1) ? "pedra" : (randomInteiro === 2) ? "papel" : "tesoura";
 }
+
+function playRound(playerChoice, computerChoice) {
+    playerChoice = playerChoice.toLowerCase();
+
+    if (playerChoice === computerChoice) {
+        return "empatou";
+    } else if (
+        (playerChoice === "pedra" && computerChoice === "tesoura") ||
+        (playerChoice === "papel" && computerChoice === "pedra") ||
+        (playerChoice === "tesoura" && computerChoice === "papel")
+    ) {
+        return "ganhou";
+    } else {
+        return "perdeu";
+    }
+}
+
+
 
 
 
