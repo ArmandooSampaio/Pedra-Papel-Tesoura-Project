@@ -3,51 +3,31 @@ function getComputerChoice() {
     return (randomInteiro === 1) ? "pedra" : (randomInteiro === 2) ? "papel" : "tesoura";
 }
 
-function playRound(playerChoice, computerChoice) {
+function playRound(playerChoice) {
     playerChoice = playerChoice.toLowerCase();
+    let computerChoice = getComputerChoice();
 
     if (playerChoice === computerChoice) {
-        return "empatou";
+        return div.textContent = 'Empatou';
     } else if (
         (playerChoice === "pedra" && computerChoice === "tesoura") ||
         (playerChoice === "papel" && computerChoice === "pedra") ||
         (playerChoice === "tesoura" && computerChoice === "papel")
     ) {
-        return "ganhou";
+        return div.textContent = 'Ganhou';
     } else {
-        return "perdeu";
+        return div.textContent = 'Perdeu';
     }
 }
 
-function playGame(){
-    let counter = 1;
-    let playerWins = 0;
-    let computerWins = 0;
+const pedraBtn = document.querySelector('.pedra-btn');
+const papelBtn = document.querySelector('.papel-btn');
+const tesouraBtn = document.querySelector('.tesoura-btn');
+const div = document.querySelector('.result');
 
-
-    while(counter <= 5){
-        let computerChoice = getComputerChoice();
-        let playerChoice = prompt("Digite Pedra, Papel ou Tesoura");
-        let result = playRound(playerChoice, computerChoice);
-
-        if(result === "ganhou"){
-            playerWins++;
-        }
-        alert("O computador Escolheu: " + computerChoice + "\nVocê " + result);
-        counter++;
-    }
-
-    if(playerWins > computerWins){
-        alert("Você ganhou a melhor de 5 Parabens");
-    }else if(playerWins < computerWins){
-        alert("Você Perdeu");
-    }else{
-        alert("Você Empatou")
-    }
-}
-
-
-playGame();
+pedraBtn.addEventListener('click', () => playRound('pedra'));
+papelBtn.addEventListener('click', () => playRound('papel'));
+tesouraBtn.addEventListener('click', () => playRound('tesoura'));
 
 
 
